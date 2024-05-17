@@ -57,6 +57,14 @@ function updateWeather(response) {
   searchFormElement.addEventListener("submit", handleSearchSubmit);
   
 function displayFunction(){
+    let forecast= document.querySelector("#forecast");
+     
+    let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+
+    days.forEach(function (day) {
+        forecast.Html = 
+        forecast.Html = +
+        `
   <div class="weather-forecast">
     <div class="weather-forecast-day">
         <div class="weather-forecast-date">Tue</div>
@@ -67,4 +75,9 @@ function displayFunction(){
             </div>
         <div class="weather-forecast-temperature">9°</div>
        </div>
+`
+    });
 }
+
+displayFunction()
+
