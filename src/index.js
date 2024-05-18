@@ -1,7 +1,6 @@
 function updateWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
   let temperature = response.data.temperature.current;
-
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
@@ -40,9 +39,11 @@ function searchCity(city) {
   axios.get(apiUrl).then(updateWeather);
 }
 
+
 function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-form-input");
+  
   searchCity(searchInput.value);
 }
 
@@ -58,25 +59,27 @@ function getForecast(city) {
 function forecastDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  
   return days[date.getDay()];
 }
 
 function displayForecast(response) {
   let weeklyForecastHtml = "";
-  response.data.daily.forEach(function(day, index) {
+  response.data.daily.forEach(function (day, index) {
     if (index < 5) {
       weeklyForecastHtml += `
       <div class="days-in-row">
-        <div class="days-in-column">${forecastDay(day.time)}</div>
-        <div><img src="${day.condition.icon_url}" class="icon-in-column" /></div>
-        <div class="temp-variations">
-          <span class="max-temp">${Math.round(day.temperature.maximum)}°</span>
-          <span class="min-temp">${Math.round(day.temperature.minimum)}°</span>
-        </div>
-      </div>`;
-    }
-  });
+      <div class="days-in-column">${forecastDay(day.time)}</div>
+      <div><img src="${day.condition.icon_url}" class="icon-in-column" /></div>
+      <div class="temp-variations">
+        <span class="max-temp">${Math.round(day.temperature.maximum)}°</span>
+        <span class="min-temp">${Math.round(day.temperature.minimum)}°</span>
+      </div>
+    </div>`;
+  }
+});
 
-  let weeklyForecastElement = document.querySelector("#weekly-forecast");
-  weeklyForecastElement.innerHTML = weeklyForecastHtml;
+let weeklyForecastElement = document.querySelector("#forecast");
+weeklyForecastElement.innerHTML = weeklyForecastHtml;
 }
+  
