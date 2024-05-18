@@ -120,19 +120,14 @@ body {
         padding: 0 10px;
       }
 
-      .temperature-min {
-        opacity: 0.7;
-      }
-      
-      .temp-unit-max {
-        font-size: 15px;
-      }
-      
-      .temp-unit-min {
-        opacity: 0.7;
-        font-size: 15px;
+      .min-temp {
+        opacity: 0.6;
       }
     
+      .max-temp {
+        font-weight: bold;
+      }
+      
     footer{
         border-top: 1px solid #F7F5FD;
         padding: 30px 0 0 0;
